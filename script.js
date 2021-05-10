@@ -21,7 +21,7 @@
                     const computerSelection = computerPlay();
                     playRound(playerSelection, computerSelection);
                     rounds++;
-                    if (rounds === 3) {
+                    if (playerScore === 5 || computerScore === 5) {
                         determineWinner();
                     }
                     //console.log(`Computer Score: ${computerScore}  Player Score: ${playerScore}`);
@@ -38,19 +38,19 @@
                 if (playerSelection === "rock") {
                     if (computerSelection === "rock") {
                         roundmsg.textContent = "It's a tie!";
+                        updateScore(0, 0);
                         tallyRounds();
+                        displayScore();
                     } else if (computerSelection === "paper") {
                         updateScore(0, 1);
                         tallyRounds();
+                        displayScore();
                         roundmsg.textContent = "You lose! Paper beats rock.";
-                        computertally.textContent = computerScore;
-                        playertally.textContent = playerScore;
                     } else if (computerSelection === "scissors") {
                         updateScore(1, 0);
                         tallyRounds();
+                        displayScore();
                         roundmsg.textContent = "You win! Rock beats scissors.";
-                        computertally.textContent = computerScore;
-                        playertally.textContent = playerScore;
                     } else {
                         roundmsg.textContent = "Something went wrong.";
                     }
@@ -110,6 +110,11 @@
             function updateScore(num1, num2) {
                 playerScore += num1;
                 computerScore += num2;
+            }
+
+            function displayScore() {
+                computertally.textContent = computerScore;
+                playertally.textContent = playerScore;
             }
 
             function tallyRounds() {
