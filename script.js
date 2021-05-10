@@ -2,6 +2,15 @@
             
             let playerScore = 0;
             let computerScore = 0;
+            let rounds = 0;
+
+            const buttons = document.querySelectorAll('button');
+            const msgbox = document.querySelector('#msgbox');
+            const computertally = document.querySelector('#computertally');
+            const playertally = document.querySelector('#playertally');
+            const roundtally = document.querySelector('#roundtally');
+    
+            
             
             /* Plays the game and logs the round result & the scores each loop.
                 after loop, prints results of determineWinner function */
@@ -11,12 +20,12 @@
                     const playerSelection = buttonid;
                     const computerSelection = computerPlay();
                     playRound(playerSelection, computerSelection);
-                    if (playerScore === 3 || computerScore == 3) {
+                    rounds++;
+                    if (rounds === 3) {
                         determineWinner();
                     }
                     //console.log(`Computer Score: ${computerScore}  Player Score: ${playerScore}`);
                 //}
-                //console.log(determineWinner());
             }
             // Computer chooses random string from possibleMoves array
             function computerPlay() {
@@ -29,13 +38,16 @@
                 if (playerSelection === "rock") {
                     if (computerSelection === "rock") {
                         roundmsg.textContent = "It's a tie!";
+                        tallyRounds();
                     } else if (computerSelection === "paper") {
                         updateScore(0, 1);
+                        tallyRounds();
                         roundmsg.textContent = "You lose! Paper beats rock.";
                         computertally.textContent = computerScore;
                         playertally.textContent = playerScore;
                     } else if (computerSelection === "scissors") {
                         updateScore(1, 0);
+                        tallyRounds();
                         roundmsg.textContent = "You win! Rock beats scissors.";
                         computertally.textContent = computerScore;
                         playertally.textContent = playerScore;
@@ -92,18 +104,17 @@
                 }
                 playerScore = 0;
                 computerScore = 0;
-                ptally= 0;
-                ctally = 0;
+                rounds = 0;
             }
             
             function updateScore(num1, num2) {
                 playerScore += num1;
                 computerScore += num2;
-                
             }
 
-
-            const buttons = document.querySelectorAll('button');
+            function tallyRounds() {
+                roundtally.textContent = rounds +1;
+            }
 
             buttons.forEach((button) => {
                 button.addEventListener('click', () => {
@@ -111,11 +122,7 @@
                 });
             });
 
-            const msgbox = document.querySelector('#msgbox');
-            const computertally = document.querySelector('#computertally');
-            const playertally = document.querySelector('#playertally');
-            let ctally = parseInt(computertally.textContent) || computerScore || 0;
-            let ptally = parseInt(playertally.textContent) || playerScore || 0;
+
 
             
             
