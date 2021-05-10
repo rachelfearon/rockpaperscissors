@@ -4,14 +4,16 @@
             let computerScore = 0;
             let rounds = 0;
 
-            const buttons = document.querySelector('#buttons');
+            const buttonsbox = document.querySelector('#buttonsbox');
+            
             const playbtn = document.querySelector('#playbtn');
             const msgbox = document.querySelector('#msgbox');
             const computertally = document.querySelector('#computertally');
             const playertally = document.querySelector('#playertally');
             const roundtally = document.querySelector('#roundtally');
-    
+
             playbtn.onclick = () => {
+                buttonsbox.removeChild(playbtn);
                 createRockBtn();
                 createPaperBtn();
                 createScissorsBtn();
@@ -21,24 +23,40 @@
                 let rockbtn = document.createElement('button');
                 rockbtn.classList.add('rockbtn');
                 rockbtn.setAttribute('id', 'rock');
+                rockbtn.setAttribute('class', 'movebutton');
                 rockbtn.textContent = 'Rock';
-                buttons.appendChild(rockbtn);                
+                let buttonid = rockbtn.id;
+                rockbtn.addEventListener('click', () => {
+                    game(buttonid);
+                }) 
+
+                buttonsbox.appendChild(rockbtn);
             }
 
             function createPaperBtn() {
                 let paperbtn = document.createElement('button');
                 paperbtn.classList.add('paperbtn');
                 paperbtn.setAttribute('id', 'paper');
+                paperbtn.setAttribute('class', 'movebutton');
                 paperbtn.textContent = 'Paper';
-                buttons.appendChild(paperbtn);                
+                let buttonid = paperbtn.id;
+                paperbtn.addEventListener('click', () => {
+                    game(buttonid);
+                }) 
+                buttonsbox.appendChild(paperbtn);                
             }
 
             function createScissorsBtn() {
                 let scissorsbtn = document.createElement('button');
                 scissorsbtn.classList.add('scissorsbtn');
                 scissorsbtn.setAttribute('id', 'scissors');
+                scissorsbtn.setAttribute('class', 'movebutton');
                 scissorsbtn.textContent = 'Scissors';
-                buttons.appendChild(scissorsbtn);                
+                let buttonid = scissorsbtn.id;
+                scissorsbtn.addEventListener('click', () => {
+                    game(buttonid);
+                }) 
+                buttonsbox.appendChild(scissorsbtn);                
             }
             
             /* Plays the game and logs the round result & the scores each loop.
@@ -150,11 +168,11 @@
                 roundtally.textContent = rounds +1;
             }
 
-            // buttons.forEach((button) => {   //**restore and point to generated RPS buttons after Play Game is clicked
+            // movebutton.forEach((button) => {   //**restore and point to generated RPS buttons after Play Game is clicked
             //     button.addEventListener('click', () => {
             //         console.log(game(button.id));
             //     });
-            //});
+            // });
 
 
 
