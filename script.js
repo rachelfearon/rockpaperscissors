@@ -82,7 +82,10 @@
                     rounds++;
                     if (playerScore === 5 || computerScore === 5) {
                         determineWinner();
+                        const node = document.getElementById('buttonsbox');
+                        node.querySelectorAll('button').forEach(n => n.remove());
                         createPlayAgainBtn();
+
                     }
                     //console.log(`Computer Score: ${computerScore}  Player Score: ${playerScore}`);
                 //}
