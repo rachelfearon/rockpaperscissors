@@ -4,13 +4,42 @@
             let computerScore = 0;
             let rounds = 0;
 
-            const buttons = document.querySelectorAll('button');
+            const buttons = document.querySelector('#buttons');
+            const playbtn = document.querySelector('#playbtn');
             const msgbox = document.querySelector('#msgbox');
             const computertally = document.querySelector('#computertally');
             const playertally = document.querySelector('#playertally');
             const roundtally = document.querySelector('#roundtally');
     
-            
+            playbtn.onclick = () => {
+                createRockBtn();
+                createPaperBtn();
+                createScissorsBtn();
+            }
+
+            function createRockBtn() {
+                let rockbtn = document.createElement('button');
+                rockbtn.classList.add('rockbtn');
+                rockbtn.setAttribute('id', 'rock');
+                rockbtn.textContent = 'Rock';
+                buttons.appendChild(rockbtn);                
+            }
+
+            function createPaperBtn() {
+                let paperbtn = document.createElement('button');
+                paperbtn.classList.add('paperbtn');
+                paperbtn.setAttribute('id', 'paper');
+                paperbtn.textContent = 'Paper';
+                buttons.appendChild(paperbtn);                
+            }
+
+            function createScissorsBtn() {
+                let scissorsbtn = document.createElement('button');
+                scissorsbtn.classList.add('scissorsbtn');
+                scissorsbtn.setAttribute('id', 'scissors');
+                scissorsbtn.textContent = 'Scissors';
+                buttons.appendChild(scissorsbtn);                
+            }
             
             /* Plays the game and logs the round result & the scores each loop.
                 after loop, prints results of determineWinner function */
@@ -121,11 +150,11 @@
                 roundtally.textContent = rounds +1;
             }
 
-            buttons.forEach((button) => {
-                button.addEventListener('click', () => {
-                    console.log(game(button.id));
-                });
-            });
+            // buttons.forEach((button) => {   //**restore and point to generated RPS buttons after Play Game is clicked
+            //     button.addEventListener('click', () => {
+            //         console.log(game(button.id));
+            //     });
+            //});
 
 
 
