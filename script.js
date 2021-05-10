@@ -19,6 +19,7 @@
                 createScissorsBtn();
             }
 
+
             function createRockBtn() {
                 let rockbtn = document.createElement('button');
                 rockbtn.classList.add('rockbtn');
@@ -58,6 +59,17 @@
                 }) 
                 buttonsbox.appendChild(scissorsbtn);                
             }
+
+            function createPlayAgainBtn() {
+                let playAgainBtn = document.createElement('button');
+                playAgainBtn.classList.add('playAgainBtn');
+                playAgainBtn.setAttribute('id', 'playagain');
+                playAgainBtn.textContent = 'Play Again';
+                playAgainBtn.addEventListener('click', () => {
+                    resetGame();
+                })
+                buttonsbox.appendChild(playAgainBtn);
+            }
             
             /* Plays the game and logs the round result & the scores each loop.
                 after loop, prints results of determineWinner function */
@@ -70,10 +82,28 @@
                     rounds++;
                     if (playerScore === 5 || computerScore === 5) {
                         determineWinner();
+                        createPlayAgainBtn();
                     }
                     //console.log(`Computer Score: ${computerScore}  Player Score: ${playerScore}`);
                 //}
             }
+
+            function resetGame() {
+                const node = document.getElementById('buttonsbox');
+                node.querySelectorAll('button').forEach(n => n.remove());
+                const playbtn = document.createElement('button');
+                playbtn.classList.add('playbtn');
+                playbtn.setAttribute('id', 'playbtn');
+                playbtn.textContent = 'Play Game';
+                buttonsbox.appendChild(playbtn);
+                playbtn.onclick = () => {
+                    buttonsbox.removeChild(playbtn);
+                    createRockBtn();
+                    createPaperBtn();
+                    createScissorsBtn();
+                }
+            }
+
             // Computer chooses random string from possibleMoves array
             function computerPlay() {
                 const possibleMoves = ["rock", "paper", "scissors"];
