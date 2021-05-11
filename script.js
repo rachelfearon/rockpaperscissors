@@ -16,6 +16,8 @@
                 createRockBtn();
                 createPaperBtn();
                 createScissorsBtn();
+                createLizardBtn();
+                createSpockBtn();
             }
 
             function createRockBtn() {
@@ -56,6 +58,32 @@
                     game(buttonid);
                 }) 
                 buttonsbox.appendChild(scissorsbtn);                
+            }
+
+            function createLizardBtn() {
+                let lizardbtn = document.createElement('button');
+                lizardbtn.classList.add('lizardbtn');
+                lizardbtn.setAttribute('id', 'lizard');
+                lizardbtn.setAttribute('class', 'movebutton');
+                lizardbtn.textContent = 'Lizard';
+                let buttonid = lizardbtn.id;
+                lizardbtn.addEventListener('click', () => {
+                    game(buttonid);
+                }) 
+                buttonsbox.appendChild(lizardbtn);                
+            }
+
+            function createSpockBtn() {
+                let spockbtn = document.createElement('button');
+                spockbtn.classList.add('spockbtn');
+                spockbtn.setAttribute('id', 'spock');
+                spockbtn.setAttribute('class', 'movebutton');
+                spockbtn.textContent = 'Spock';
+                let buttonid = spockbtn.id;
+                spockbtn.addEventListener('click', () => {
+                    game(buttonid);
+                }) 
+                buttonsbox.appendChild(spockbtn);                
             }
 
             function createPlayAgainBtn() {
@@ -100,11 +128,13 @@
                     createRockBtn();
                     createPaperBtn();
                     createScissorsBtn();
+                    createLizardBtn();
+                    createSpockBtn();
                 }
             } 
 
             function computerPlay() {
-                const possibleMoves = ["rock", "paper", "scissors"];
+                const possibleMoves = ["rock", "paper", "scissors", "lizard", "spock"];
                 return possibleMoves[Math.floor(Math.random()*possibleMoves.length)];
             }
 
@@ -120,12 +150,22 @@
                         updateScore(0, 1);
                         tallyRounds();
                         displayScore();
-                        roundmsg.textContent = "You lose! Paper beats rock.";
+                        roundmsg.textContent = "You lose! Paper covers rock.";
                     } else if (computerSelection === "scissors") {
                         updateScore(1, 0);
                         tallyRounds();
                         displayScore();
-                        roundmsg.textContent = "You win! Rock beats scissors.";
+                        roundmsg.textContent = "You win! Rock smashes scissors.";
+                    } else if (computerSelection === "lizard") {
+                        updateScore(1, 0);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You win! Rock crushes lizard.";
+                    } else if (computerSelection === "spock") {
+                        updateScore(0, 1);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You lose! Spock vaporizes rock.";
                     } else {
                         roundmsg.textContent = "Something went wrong.";
                     }
@@ -133,16 +173,27 @@
                 } else if (playerSelection === "paper") {
                     if (computerSelection === "rock") {
                         updateScore(1, 0);
-                        roundmsg.textContent = "You win! Paper beats rock.";
-                        computertally.textContent = computerScore;
-                        playertally.textContent = playerScore;
+                        roundmsg.textContent = "You win! Paper covers rock.";
+                        tallyRounds();
+                        displayScore();
                     } else if (computerSelection === "paper") {
                         roundmsg.textContent = "It's a tie!";
+                        updateScore(0, 0);
                     } else if (computerSelection === "scissors") {
                         updateScore(0, 1);
-                        roundmsg.textContent = "You lose! Scissors beats paper.";
-                        computertally.textContent = computerScore;
-                        playertally.textContent = playerScore;
+                        roundmsg.textContent = "You lose! Scissors cuts paper.";
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "lizard") {
+                        updateScore(0, 1);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You lose! Lizard eats paper.";
+                    } else if (computerSelection === "spock") {
+                        updateScore(1, 0);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You win! Paper disproves Spock.";
                     } else {
                         return "Something went wrong.";
                     }
@@ -150,20 +201,95 @@
                 } else if (playerSelection === "scissors") {
                     if (computerSelection === "rock") {
                         updateScore(0, 1);
-                        roundmsg.textContent = "You lose! Rock beats scissors.";
-                        computertally.textContent = computerScore;
-                        playertally.textContent = playerScore;
+                        roundmsg.textContent = "You lose! Rock smashes scissors.";
+                        tallyRounds();
+                        displayScore();
                     } else if (computerSelection === "paper") {
                         updateScore(1, 0);
-                        roundmsg.textContent = "You win! Scissors beats paper.";
-                        computertally.textContent = computerScore;
-                        playertally.textContent = playerScore;
+                        roundmsg.textContent = "You win! Scissors cuts paper.";
+                        tallyRounds();
+                        displayScore();
                     } else if (computerSelection === "scissors") {
+                        roundmsg.textContent = "It's a tie!";
+                        updateScore(0, 0);
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "lizard") {
+                        updateScore(1, 0);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You win! Scissors decapitates lizard.";
+                    } else if (computerSelection === "spock") {
+                        updateScore(0, 1);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You lose! Spock smashes scissors.";
+                    } else {
+                        return "Something went wrong.";
+                    }
+                } 
+                // Player inputs LIZARD
+                else if (playerSelection === "lizard") {
+                    if (computerSelection === "rock") {
+                        updateScore(0, 1);
+                        roundmsg.textContent = "You lose! Rock crushes lizard.";
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "paper") {
+                        updateScore(1, 0);
+                        roundmsg.textContent = "You win! Lizard eats paper.";
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "scissors") {
+                        roundmsg.textContent = "You lose! Scissors decapitates lizard.";
+                        updateScore(0, 1);
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "lizard") {
+                        updateScore(0, 0);
+                        roundmsg.textContent = "It's a tie!";
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "spock") {
+                        updateScore(1, 0);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You win! Lizard poisons Spock.";
+                    } else {
+                        return "Something went wrong.";
+                    }
+                    // Player inputs SPOCK
+                } else if (playerSelection === "spock") {
+                    if (computerSelection === "rock") {
+                        updateScore(1, 0);
+                        roundmsg.textContent = "You win! Spock vaporizes rock.";
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "paper") {
+                        updateScore(0, 1);
+                        roundmsg.textContent = "You lose! Paper disproves Spock.";
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "scissors") {
+                        roundmsg.textContent = "You win! Spock smashes scissors.";
+                        updateScore(1, 0);
+                        tallyRounds();
+                        displayScore();
+                    } else if (computerSelection === "lizard") {
+                        updateScore(0, 1);
+                        tallyRounds();
+                        displayScore();
+                        roundmsg.textContent = "You lose! Lizard poisons Spock.";
+                    } else if (computerSelection === "spock") {
+                        updateScore(0, 0);
+                        tallyRounds();
+                        displayScore();
                         roundmsg.textContent = "It's a tie!";
                     } else {
                         return "Something went wrong.";
                     }
-                } else // Player input is invalid
+                } 
+                else // Player input is invalid
                     {
                         return "Input is invalid - try again.";
                     }
