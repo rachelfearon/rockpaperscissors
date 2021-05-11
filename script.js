@@ -5,20 +5,18 @@
             let rounds = 0;
 
             const buttonsbox = document.querySelector('#buttonsbox');
-            
-            const playbtn = document.querySelector('#playbtn');
+            const startbtn = document.querySelector('#startbtn');
             const msgbox = document.querySelector('#msgbox');
             const computertally = document.querySelector('#computertally');
             const playertally = document.querySelector('#playertally');
             const roundtally = document.querySelector('#roundtally');
 
-            playbtn.onclick = () => {
-                buttonsbox.removeChild(playbtn);
+            startbtn.onclick = () => {
+                buttonsbox.removeChild(startbtn);
                 createRockBtn();
                 createPaperBtn();
                 createScissorsBtn();
             }
-
 
             function createRockBtn() {
                 let rockbtn = document.createElement('button');
@@ -71,11 +69,7 @@
                 buttonsbox.appendChild(playAgainBtn);
             }
             
-            /* Plays the game and logs the round result & the scores each loop.
-                after loop, prints results of determineWinner function */
             function game(buttonid) {
-                //for (let rounds = 0; rounds < 5; rounds++) { 
-                    gamemsg.textContent = '';
                     const playerSelection = buttonid;
                     const computerSelection = computerPlay();
                     playRound(playerSelection, computerSelection);
@@ -85,29 +79,30 @@
                         const node = document.getElementById('buttonsbox');
                         node.querySelectorAll('button').forEach(n => n.remove());
                         createPlayAgainBtn();
-
                     }
-                    //console.log(`Computer Score: ${computerScore}  Player Score: ${playerScore}`);
-                //}
             }
 
             function resetGame() {
                 const node = document.getElementById('buttonsbox');
                 node.querySelectorAll('button').forEach(n => n.remove());
-                const playbtn = document.createElement('button');
-                playbtn.classList.add('playbtn');
-                playbtn.setAttribute('id', 'playbtn');
-                playbtn.textContent = 'Play Game';
-                buttonsbox.appendChild(playbtn);
-                playbtn.onclick = () => {
-                    buttonsbox.removeChild(playbtn);
+                computertally.textContent = 0;
+                playertally.textContent = 0;
+                roundtally.textContent = 0;
+                roundmsg.textContent = '';
+                gamemsg.textContent = '';
+                const startbtn = document.createElement('button'); 
+                startbtn.classList.add('startbtn');
+                startbtn.setAttribute('id', 'startbtn');
+                startbtn.textContent = 'Start Game';
+                buttonsbox.appendChild(startbtn);
+                startbtn.onclick = () => {
+                    buttonsbox.removeChild(startbtn);
                     createRockBtn();
                     createPaperBtn();
                     createScissorsBtn();
                 }
-            }
+            } 
 
-            // Computer chooses random string from possibleMoves array
             function computerPlay() {
                 const possibleMoves = ["rock", "paper", "scissors"];
                 return possibleMoves[Math.floor(Math.random()*possibleMoves.length)];
@@ -200,16 +195,3 @@
             function tallyRounds() {
                 roundtally.textContent = rounds +1;
             }
-
-            // movebutton.forEach((button) => {   //**restore and point to generated RPS buttons after Play Game is clicked
-            //     button.addEventListener('click', () => {
-            //         console.log(game(button.id));
-            //     });
-            // });
-
-
-
-            
-            
-
-            //game();
