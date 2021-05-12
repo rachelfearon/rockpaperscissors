@@ -136,23 +136,11 @@
                 roundtally.textContent = 0;
                 roundmsg.textContent = '';
                 gamemsg.textContent = '';
-                const startbtn = document.createElement('input'); 
-                startbtn.classList.add('startbtn');
-                startbtn.setAttribute('id', 'startbtn');
-                startbtn.setAttribute('class', 'button');
-                startbtn.setAttribute('type', 'image');
-                startbtn.setAttribute('src', 'play-button.png');
-                startbtn.setAttribute('alt', 'start game');
-                startbtn.textContent = 'Start Game';
-                buttonsbox.appendChild(startbtn);
-                startbtn.onclick = () => {
-                    buttonsbox.removeChild(startbtn);
                     createRockBtn();
                     createPaperBtn();
                     createScissorsBtn();
                     createLizardBtn();
                     createSpockBtn();
-                }
             } 
 
             function computerPlay() {
