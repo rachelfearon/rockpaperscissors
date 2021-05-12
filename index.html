@@ -6,41 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Spock icon created by H Alberto Gongora from Noun Project -->
 </head>
 <body>
-    <h1>Rock, Paper, Scissors, Spock, Lizard. Let's play.</h1>
-
+    <h1>Rock, Paper, Scissors, Lizard, Spock.</h1>
+    <h2>Let's play.</h2>
+    <p>For an explanation of the rules, <a href="https://www.instructables.com/How-to-Play-Rock-Paper-Scissors-Lizard-Spock/">click here</a>.</p>
     <p>The first to get 5 points wins. Click to play:</p>
+    
     <div id="buttonsbox">
         <!-- <button id="start">Start Game</button> -->
         <input type="image" id="startbtn" alt="Start Game" class="button" src="play-button.png">
     </div>
 
-        
-    <br>
-    <br>
-
     <div id="msgbox">
         <p id="roundmsg"></p>
         <p id="gamemsg"></p>
     </div>
-    <br>
-    <div id="computerscore">
-        <div>Computer Score: </div>
-        <div id="computertally"></div>
+    <div class="scorebox">
+        <div id="computerscore">
+            <div>Computer Score: </div>
+            <div id="computertally"></div>
+        </div>
+        <div id="playerscore">
+            <div>Player Score: </div>
+            <div id="playertally"></div>
+        </div>
+        <br>
+        <div id="rounds">
+            <div>Round Number: </div>
+            <div id="roundtally"></div>
+        </div>
     </div>
-
-    <div>
-        <div>Player Score: </div>
-        <div id="playertally"></div>
-    </div>
-    <br>
-    <div id="rounds">
-        <div>Round Number: </div>
-        <div id="roundtally"></div>
-    </div>
-
-
 
     <script src="script.js"></script>
 </body>

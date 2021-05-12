@@ -21,11 +21,13 @@
             }
 
             function createRockBtn() {
-                let rockbtn = document.createElement('button');
+                let rockbtn = document.createElement('input');
                 rockbtn.classList.add('rockbtn');
+                rockbtn.setAttribute('type', 'image');
                 rockbtn.setAttribute('id', 'rock');
                 rockbtn.setAttribute('class', 'movebutton');
-                rockbtn.textContent = 'Rock';
+                rockbtn.setAttribute('src', 'rock.jpg');
+                rockbtn.setAttribute('alt', 'rock')
                 let buttonid = rockbtn.id;
                 rockbtn.addEventListener('click', () => {
                     game(buttonid);
@@ -35,10 +37,13 @@
             }
 
             function createPaperBtn() {
-                let paperbtn = document.createElement('button');
+                let paperbtn = document.createElement('input');
                 paperbtn.classList.add('paperbtn');
+                paperbtn.setAttribute('type', 'image');
                 paperbtn.setAttribute('id', 'paper');
                 paperbtn.setAttribute('class', 'movebutton');
+                paperbtn.setAttribute('src', 'paper.png');
+                paperbtn.setAttribute('alt', 'paper');
                 paperbtn.textContent = 'Paper';
                 let buttonid = paperbtn.id;
                 paperbtn.addEventListener('click', () => {
@@ -48,10 +53,13 @@
             }
 
             function createScissorsBtn() {
-                let scissorsbtn = document.createElement('button');
+                let scissorsbtn = document.createElement('input');
                 scissorsbtn.classList.add('scissorsbtn');
+                scissorsbtn.setAttribute('type', 'image');
                 scissorsbtn.setAttribute('id', 'scissors');
                 scissorsbtn.setAttribute('class', 'movebutton');
+                scissorsbtn.setAttribute('src', 'scissors.jpg');
+                scissorsbtn.setAttribute('alt', 'scissors');
                 scissorsbtn.textContent = 'Scissors';
                 let buttonid = scissorsbtn.id;
                 scissorsbtn.addEventListener('click', () => {
@@ -61,10 +69,13 @@
             }
 
             function createLizardBtn() {
-                let lizardbtn = document.createElement('button');
+                let lizardbtn = document.createElement('input');
                 lizardbtn.classList.add('lizardbtn');
+                lizardbtn.setAttribute('type', 'image');
                 lizardbtn.setAttribute('id', 'lizard');
                 lizardbtn.setAttribute('class', 'movebutton');
+                lizardbtn.setAttribute('src', 'lizard.png');
+                lizardbtn.setAttribute('alt', 'lizard');
                 lizardbtn.textContent = 'Lizard';
                 let buttonid = lizardbtn.id;
                 lizardbtn.addEventListener('click', () => {
@@ -74,10 +85,13 @@
             }
 
             function createSpockBtn() {
-                let spockbtn = document.createElement('button');
+                let spockbtn = document.createElement('input');
                 spockbtn.classList.add('spockbtn');
+                spockbtn.setAttribute('type', 'image');
                 spockbtn.setAttribute('id', 'spock');
                 spockbtn.setAttribute('class', 'movebutton');
+                spockbtn.setAttribute('src', 'spock.png');
+                spockbtn.setAttribute('alt', 'spock');
                 spockbtn.textContent = 'Spock';
                 let buttonid = spockbtn.id;
                 spockbtn.addEventListener('click', () => {
@@ -87,8 +101,12 @@
             }
 
             function createPlayAgainBtn() {
-                let playAgainBtn = document.createElement('button');
+                let playAgainBtn = document.createElement('input');
                 playAgainBtn.classList.add('playAgainBtn');
+                playAgainBtn.setAttribute('type', 'image');
+                playAgainBtn.setAttribute('class', 'button');
+                playAgainBtn.setAttribute('alt', 'play again');
+                playAgainBtn.setAttribute('src', 'reload.png')
                 playAgainBtn.setAttribute('id', 'playagain');
                 playAgainBtn.textContent = 'Play Again';
                 playAgainBtn.addEventListener('click', () => {
@@ -105,22 +123,26 @@
                     if (playerScore === 5 || computerScore === 5) {
                         determineWinner();
                         const node = document.getElementById('buttonsbox');
-                        node.querySelectorAll('button').forEach(n => n.remove());
+                        node.querySelectorAll('input').forEach(n => n.remove());
                         createPlayAgainBtn();
                     }
             }
 
             function resetGame() {
                 const node = document.getElementById('buttonsbox');
-                node.querySelectorAll('button').forEach(n => n.remove());
+                node.querySelectorAll('input').forEach(n => n.remove());
                 computertally.textContent = 0;
                 playertally.textContent = 0;
                 roundtally.textContent = 0;
                 roundmsg.textContent = '';
                 gamemsg.textContent = '';
-                const startbtn = document.createElement('button'); 
+                const startbtn = document.createElement('input'); 
                 startbtn.classList.add('startbtn');
                 startbtn.setAttribute('id', 'startbtn');
+                startbtn.setAttribute('class', 'button');
+                startbtn.setAttribute('type', 'image');
+                startbtn.setAttribute('src', 'play-button.png');
+                startbtn.setAttribute('alt', 'start game');
                 startbtn.textContent = 'Start Game';
                 buttonsbox.appendChild(startbtn);
                 startbtn.onclick = () => {
@@ -297,11 +319,11 @@
 
             function determineWinner() {
                 if (playerScore > computerScore) {
-                    gamemsg.textContent = "You won the game!";
+                    gamemsg.textContent = "You won the game! Click arrow to play again.";
                 } else if (playerScore < computerScore) {
-                    gamemsg.textContent = "You lost the game!";
+                    gamemsg.textContent = "You lost the game! Click arrow to play again.";
                 } else if (playerScore === computerScore) {
-                    gamemsg.textContent = "It's a tie game!";
+                    gamemsg.textContent = "It's a tie game! Click arrow to play again.";
                 }
                 playerScore = 0;
                 computerScore = 0;
