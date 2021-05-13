@@ -66,13 +66,16 @@ h1, h2, p {
     margin: 10px;
 }
 
-.button:hover, .movebutton:hover {
-    /* transform: scale(1.1); */
-    border-color: goldenrod;
-    box-shadow: 0 0 1rem goldenrod;
-    transition: b
+@media (hover: hover) {
+    .button:hover, .movebutton:hover {
+        border-color: goldenrod;
+        box-shadow: 0 0 1rem goldenrod;
+    }
 }
 
 .movebutton:active {
     transform: scale(1.1);
+    border-color: goldenrod;
+    box-shadow: 0 0 1rem goldenrod;
+    transition: .02s;
 }

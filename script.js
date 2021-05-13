@@ -26,7 +26,7 @@
                 rockbtn.setAttribute('type', 'image');
                 rockbtn.setAttribute('id', 'rock');
                 rockbtn.setAttribute('class', 'movebutton');
-                rockbtn.setAttribute('src', 'rock.jpg');
+                rockbtn.setAttribute('src', 'images/rock.jpg');
                 rockbtn.setAttribute('alt', 'rock')
                 let buttonid = rockbtn.id;
                 rockbtn.addEventListener('click', () => {
@@ -42,7 +42,7 @@
                 paperbtn.setAttribute('type', 'image');
                 paperbtn.setAttribute('id', 'paper');
                 paperbtn.setAttribute('class', 'movebutton');
-                paperbtn.setAttribute('src', 'paper.png');
+                paperbtn.setAttribute('src', 'images/paper.png');
                 paperbtn.setAttribute('alt', 'paper');
                 paperbtn.textContent = 'Paper';
                 let buttonid = paperbtn.id;
@@ -58,7 +58,7 @@
                 scissorsbtn.setAttribute('type', 'image');
                 scissorsbtn.setAttribute('id', 'scissors');
                 scissorsbtn.setAttribute('class', 'movebutton');
-                scissorsbtn.setAttribute('src', 'scissors.jpg');
+                scissorsbtn.setAttribute('src', 'images/scissors.jpg');
                 scissorsbtn.setAttribute('alt', 'scissors');
                 scissorsbtn.textContent = 'Scissors';
                 let buttonid = scissorsbtn.id;
@@ -74,7 +74,7 @@
                 lizardbtn.setAttribute('type', 'image');
                 lizardbtn.setAttribute('id', 'lizard');
                 lizardbtn.setAttribute('class', 'movebutton');
-                lizardbtn.setAttribute('src', 'lizard.png');
+                lizardbtn.setAttribute('src', 'images/lizard.png');
                 lizardbtn.setAttribute('alt', 'lizard');
                 lizardbtn.textContent = 'Lizard';
                 let buttonid = lizardbtn.id;
@@ -90,7 +90,7 @@
                 spockbtn.setAttribute('type', 'image');
                 spockbtn.setAttribute('id', 'spock');
                 spockbtn.setAttribute('class', 'movebutton');
-                spockbtn.setAttribute('src', 'spock.png');
+                spockbtn.setAttribute('src', 'images/spock.png');
                 spockbtn.setAttribute('alt', 'spock');
                 spockbtn.textContent = 'Spock';
                 let buttonid = spockbtn.id;
@@ -106,7 +106,7 @@
                 playAgainBtn.setAttribute('type', 'image');
                 playAgainBtn.setAttribute('class', 'button');
                 playAgainBtn.setAttribute('alt', 'play again');
-                playAgainBtn.setAttribute('src', 'reload.png')
+                playAgainBtn.setAttribute('src', 'images/reload.png')
                 playAgainBtn.setAttribute('id', 'playagain');
                 playAgainBtn.textContent = 'Play Again';
                 playAgainBtn.addEventListener('click', () => {
